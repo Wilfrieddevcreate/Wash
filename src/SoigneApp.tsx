@@ -5,6 +5,7 @@ import { ArrowRight, Bell, Check, ChevronDown, ChevronRight, Clock3, Droplets, H
 import { Area, AreaChart, Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { FiInstagram } from 'react-icons/fi';
 import { motion } from 'motion/react';
+import PublicHeader from './components/public/PublicHeader';
 
 type View = 'home' | 'services' | 'catalogue' | 'order' | 'tracking' | 'about' | 'faq' | 'contact' | 'admin' | 'partner' | 'courier';
 type Item = { id: number; name: string; category: string; price: number; image: string; description: string };
@@ -33,14 +34,13 @@ const money = (n: number) => `${n.toLocaleString('fr-FR')} FCFA`;
 
 export default function App({ initialView = 'home' }: { initialView?: View }) {
   const [view, setView] = useState<View>(initialView);
-  const [menu, setMenu] = useState(false);
   const [notice, setNotice] = useState('');
   const [cart, setCart] = useState<Record<number, number>>({});
   const [orderStep, setOrderStep] = useState(1);
   const [category, setCategory] = useState('Tous');
   const [search, setSearch] = useState('');
 
-  const go = (v: View) => { setView(v); setMenu(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const go = (v: View) => { setView(v); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const cartCount = Object.values(cart).reduce((a, b) => a + b, 0);
   const total = Object.entries(cart).reduce((sum, [id, qty]) => sum + (items.find(i => i.id === Number(id))?.price || 0) * qty, 0);
   const filtered = useMemo(() => items.filter(i => (category === 'Tous' || i.category === category) && i.name.toLowerCase().includes(search.toLowerCase())), [category, search]);
@@ -48,7 +48,7 @@ export default function App({ initialView = 'home' }: { initialView?: View }) {
 
   return <div className="app">
     {notice && <div className="toast"><Check size={16} />{notice}</div>}
-    {view === 'home' || view === 'services' || view === 'catalogue' || view === 'about' || view === 'faq' || view === 'contact' ? <PublicNav view={view} go={go} menu={menu} setMenu={setMenu} cartCount={cartCount} /> : null}
+    {view === 'home' || view === 'services' || view === 'catalogue' || view === 'about' || view === 'faq' || view === 'contact' ? <PublicHeader view={view} go={go} cartCount={cartCount} /> : null}
     {view === 'home' && <Home go={go} add={add} />}
     {view === 'services' && <Services go={go} />}
     {view === 'catalogue' && <Catalogue go={go} filtered={filtered} category={category} setCategory={setCategory} search={search} setSearch={setSearch} add={add} />}
@@ -62,10 +62,6 @@ export default function App({ initialView = 'home' }: { initialView?: View }) {
     {view === 'courier' && <Workspace type="courier" go={go} />}
     {(view === 'home' || view === 'services' || view === 'catalogue' || view === 'about' || view === 'faq' || view === 'contact') && <Footer go={go} />}
   </div>;
-}
-
-function PublicNav({ view, go, menu, setMenu, cartCount }: { view: View; go: (v: View) => void; menu: boolean; setMenu: (v: boolean) => void; cartCount: number }) {
-  return <header className="nav"><div className="nav-location"><span className="live-dot" />Service disponible à Abomey-Calavi</div><div className="nav-main"><button className="brand" onClick={() => go('home')}><span className="brand-mark">s</span><span>soigné<small>pressing à domicile</small></span></button><nav className={menu ? 'nav-links open' : 'nav-links'}><button className={view === 'services' ? 'active' : ''} onClick={() => go('services')}>Services</button><button className={view === 'catalogue' ? 'active' : ''} onClick={() => go('catalogue')}>Catalogue</button><button onClick={() => go('about')}>Notre approche</button><button onClick={() => go('faq')}>Aide</button></nav><div className="nav-actions"><button className="nav-muted" onClick={() => go('tracking')}>Suivre une commande</button><button className="cart" onClick={() => go('order')}><Package size={17} />{cartCount > 0 && <b>{cartCount}</b>}</button><button className="nav-order" onClick={() => go('order')}>Commander <ArrowRight size={14}/></button><button className="menu-btn" aria-label={menu ? 'Fermer le menu' : 'Ouvrir le menu'} onClick={() => setMenu(!menu)}>{menu ? <X /> : <Menu />}</button></div></div></header>;
 }
 
 function Home({ go, add }: { go: (v: View) => void; add: (id: number) => void }) { return <>
