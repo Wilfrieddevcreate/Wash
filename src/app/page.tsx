@@ -1,3 +1,5 @@
-import App from '../SoigneApp';
+import Home from '@/views/Home';
 
-export default function HomePage() { return <App />; }
+export default function HomePage() {
+  return <Home />;
+}
