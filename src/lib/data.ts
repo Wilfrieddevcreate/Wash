@@ -1,5 +1,5 @@
 export type Item = { id: number; name: string; category: string; price: number; image: string; description: string };
-export type Service = { id: string; title: string; short: string; desc: string; from: string; image: string };
+export type Service = { id: string; title: string; short: string; desc: string; from: string; price: number; image: string };
 export type OrderStatus = 'Collecte programmée' | 'En traitement' | 'Prête à livrer';
 export type Order = {
   id: string;
@@ -32,10 +32,10 @@ export const items: Item[] = [
 ];
 
 export const services: Service[] = [
-  { id: 'wash', title: 'Lavage simple', short: 'Le quotidien, parfaitement propre.', desc: 'Le quotidien, parfaitement propre. Un lavage adapté à chaque matière, puis un séchage doux.', from: 'À partir de 1 200 FCFA', image: images.shirt },
-  { id: 'iron', title: 'Lavage & repassage', short: 'Net, jusque dans les détails.', desc: 'Pour retrouver le plaisir d’un vêtement impeccable, prêt à porter.', from: 'À partir de 1 500 FCFA', image: images.fold },
-  { id: 'dry', title: 'Nettoyage à sec', short: 'Pour les pièces qui demandent plus.', desc: 'Le soin expert des tissus qui demandent une attention particulière.', from: 'À partir de 2 800 FCFA', image: images.care },
-  { id: 'home', title: 'Linge de maison', short: 'Le confort revient chez vous.', desc: 'Draps, serviettes et linge de maison : le confort revient chez vous.', from: 'À partir de 800 FCFA', image: images.linen },
+  { id: 'wash', title: 'Lavage simple', short: 'Le quotidien, parfaitement propre.', desc: 'Le quotidien, parfaitement propre. Un lavage adapté à chaque matière, puis un séchage doux.', from: 'À partir de 1 200 FCFA', price: 1200, image: images.shirt },
+  { id: 'iron', title: 'Lavage & repassage', short: 'Net, jusque dans les détails.', desc: 'Pour retrouver le plaisir d’un vêtement impeccable, prêt à porter.', from: 'À partir de 1 500 FCFA', price: 1500, image: images.fold },
+  { id: 'dry', title: 'Nettoyage à sec', short: 'Pour les pièces qui demandent plus.', desc: 'Le soin expert des tissus qui demandent une attention particulière.', from: 'À partir de 2 800 FCFA', price: 2800, image: images.care },
+  { id: 'home', title: 'Linge de maison', short: 'Le confort revient chez vous.', desc: 'Draps, serviettes et linge de maison : le confort revient chez vous.', from: 'À partir de 800 FCFA', price: 800, image: images.linen },
 ];
 
 export const zones = ['Zogbadjè', 'Arconville', 'Fidjrossè'] as const;
@@ -49,3 +49,11 @@ export const demoOrders: Order[] = [
 ];
 
 export const money = (n: number) => `${n.toLocaleString('fr-FR')} FCFA`;
+
+export const faqs: Array<[string, string]> = [
+  ['Comment fonctionne la collecte à domicile ?', 'Vous choisissez vos articles, une adresse et un créneau. Un coursier passe récupérer votre linge, puis vous le rapporte une fois traité.'],
+  ['Dans quelles zones intervenez-vous ?', 'Nous intervenons actuellement à Abomey-Calavi, notamment à Zogbadjè, Arconville et Fidjrossè.'],
+  ['Quels sont les délais ?', 'Comptez 24 à 48 h de traitement après la collecte. Le statut de votre commande est visible à tout moment depuis la page de suivi.'],
+  ['Comment sont calculés les prix ?', 'Les tarifs du catalogue sont indicatifs, par article, auxquels s’ajoutent 1 000 FCFA de frais logistiques par commande.'],
+  ['Puis-je modifier ma commande ?', 'Tant que la collecte n’a pas eu lieu, contactez-nous : nous ajusterons votre commande avec vous.'],
+];

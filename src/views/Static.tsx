@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import Photo from '@/components/Photo';
-import { images } from '@/lib/data';
+import { faqs, images } from '@/lib/data';
 import { useStore } from '@/lib/store';
 
 export function About() {
@@ -17,14 +17,6 @@ export function About() {
     </div>
   </main>;
 }
-
-const faqs = [
-  ['Comment fonctionne la collecte à domicile ?', 'Vous choisissez vos articles, une adresse et un créneau. Un coursier passe récupérer votre linge, puis vous le rapporte une fois traité.'],
-  ['Dans quelles zones intervenez-vous ?', 'Nous intervenons actuellement à Abomey-Calavi, notamment à Zogbadjè, Arconville et Fidjrossè.'],
-  ['Quels sont les délais ?', 'Comptez 24 à 48 h de traitement après la collecte. Le statut de votre commande est visible à tout moment depuis la page de suivi.'],
-  ['Comment sont calculés les prix ?', 'Les tarifs du catalogue sont indicatifs, par article, auxquels s’ajoutent 1 000 FCFA de frais logistiques par commande.'],
-  ['Puis-je modifier ma commande ?', 'Tant que la collecte n’a pas eu lieu, contactez-nous : nous ajusterons votre commande avec vous.'],
-];
 
 export function Faq() {
   return <main className="page faq">
