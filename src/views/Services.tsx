@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { motion, MotionConfig } from 'motion/react';
 import { ArrowRight, Check, Clock, Droplets, House, Minus, Shirt, Sparkles, type LucideIcon } from 'lucide-react';
-import { group, Reveal, rise } from '@/components/motion';
+import Photo from '@/components/Photo';
+import { EASE, group, Reveal, rise } from '@/components/motion';
 import { LOGISTICS_FEE, money, services } from '@/lib/data';
 import './services.css';
 
@@ -45,12 +46,13 @@ export default function Services() {
         const d = details[s.id];
         return <Reveal as="section" id={s.id} className={`sv-row sv-row--${s.id}${i % 2 ? ' is-flip' : ''}`} key={s.id}>
           <div className="sv-wrap sv-row__grid">
-            <div className="sv-visual" aria-hidden="true">
-              <motion.span className="sv-visual__ring" animate={{ scale: [1, 1.06, 1] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} />
-              <motion.span className="sv-visual__ring sv-visual__ring--2" animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }} />
-              <motion.div className="sv-visual__icon" whileHover={{ rotate: -6, scale: 1.05 }} transition={{ type: 'spring', stiffness: 260, damping: 14 }}><Icon size={76} strokeWidth={1.2} /></motion.div>
+            <motion.div className="sv-visual" whileHover="hover">
+              <motion.div className="sv-visual__img" variants={{ hover: { scale: 1.05 } }} transition={{ duration: 0.6, ease: EASE }}>
+                <Photo src={s.image} alt={s.title} width={900} height={820} />
+              </motion.div>
+              <span className="sv-visual__tag"><Icon size={18} aria-hidden />{s.title}</span>
               <span className="sv-visual__price"><small>Dès</small>{money(s.price)}</span>
-            </div>
+            </motion.div>
             <div className="sv-copy">
               <h2>{s.title}</h2>
               <p className="sv-lead">{s.desc}</p>
