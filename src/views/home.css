@@ -28,7 +28,7 @@
 .hm p { max-width: 60ch; }
 
 .hm-wrap { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: var(--hm-gutter); }
-.hm-section { padding-block: clamp(64px, 9vw, 128px); }
+.hm-section { padding-block: clamp(48px, 6vw, 88px); }
 .hm-section--sand { background: var(--hm-sand); }
 .hm-head { display: grid; gap: 16px; align-content: start; }
 .hm-head p { color: var(--hm-muted); font-size: 1.0625rem; }
@@ -51,7 +51,7 @@
 }
 
 /* ------------------------------------------------------------------ Hero */
-.hm-hero { position: relative; background: var(--hm-ink); color: var(--hm-paper); padding-top: clamp(40px, 7vw, 96px); padding-bottom: clamp(120px, 14vw, 160px); }
+.hm-hero { position: relative; background: var(--hm-ink); color: var(--hm-paper); padding-top: clamp(40px, 7vw, 96px); padding-bottom: clamp(88px, 9vw, 112px); }
 .hm-hero__grid { display: grid; gap: 40px; align-items: center; }
 @media (min-width: 900px) { .hm-hero__grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); } }
 .hm-hero h1 span { color: var(--hm-gold); }
@@ -71,7 +71,7 @@
 
 /* Barre de réservation, à cheval sur le hero */
 .hm-book {
-  position: absolute; left: 50%; bottom: 0; transform: translate(-50%, 50%);
+  position: absolute; left: 50%; bottom: 0; translate: -50% 50%;
   display: grid; gap: 14px; align-items: end; padding: 22px clamp(18px, 3vw, 28px);
   max-width: 1120px; width: calc(100% - 2 * var(--hm-gutter)); padding-inline: clamp(18px, 3vw, 28px);
   background: var(--hm-white); color: var(--hm-ink); border-radius: var(--hm-radius); box-shadow: 0 24px 60px rgba(18, 59, 67, .22);
@@ -86,17 +86,17 @@
   .hm-book { grid-template-columns: 1.15fr 1fr 1fr 1fr auto; }
   .hm-book .hm-btn { width: auto; }
 }
-@media (max-width: 899px) { .hm-book { position: relative; left: auto; bottom: auto; transform: none; margin: 40px auto -140px; } .hm-hero { padding-bottom: 0; } }
+@media (max-width: 899px) { .hm-book { position: relative; left: auto; bottom: auto; translate: none; margin: 32px auto -56px; } .hm-hero { padding-bottom: 0; } }
 
 /* Services : mosaïque asymétrique */
-.hm-hero + .hm-section { padding-top: clamp(180px, 20vw, 220px); }
-.hm-bento { display: grid; gap: 16px; margin-top: 48px; }
+.hm-hero + .hm-section { padding-top: clamp(112px, 11vw, 140px); }
+.hm-bento { display: grid; gap: 16px; margin-top: 36px; }
 @media (min-width: 860px) {
   .hm-bento { grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(250px, auto); }
   .hm-tile--1 { grid-row: span 2; }
   .hm-tile--2 { grid-column: span 2; }
 }
-.hm-tile { display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: clamp(22px, 3vw, 34px); border-radius: var(--hm-radius); background: var(--hm-white); border: 1px solid var(--hm-line); }
+.hm-tile { will-change: transform; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: clamp(22px, 3vw, 34px); border-radius: var(--hm-radius); background: var(--hm-white); border: 1px solid var(--hm-line); }
 .hm-tile > svg { color: var(--hm-gold); }
 .hm-tile p { color: var(--hm-muted); margin-top: 10px; }
 .hm-tile__foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--hm-line); }
@@ -115,16 +115,20 @@
 .hm-tile--4 footer { border-color: rgba(18, 59, 67, .25); flex-wrap: wrap; }
 
 /* Déroulé */
-.hm-process { display: grid; gap: 48px; }
-@media (min-width: 900px) { .hm-process { grid-template-columns: .8fr 1.2fr; gap: 80px; } .hm-process .hm-head { position: sticky; top: 130px; align-self: start; } }
+.hm-process { display: grid; gap: 36px; }
+@media (min-width: 900px) { .hm-process { grid-template-columns: .8fr 1.2fr; gap: 64px; } .hm-process .hm-head { position: sticky; top: 130px; align-self: start; } }
 .hm-process .hm-head p { color: #4a5a5a; }
 .hm-steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
-.hm-steps li { counter-increment: s; display: grid; grid-template-columns: 64px 1fr; gap: 6px 20px; padding: 28px 0; border-top: 2px solid var(--hm-ink); }
+.hm-steps { position: relative; }
+.hm-steps__rail { position: absolute; top: 0; bottom: 0; left: -18px; width: 3px; background: rgba(18, 59, 67, .12); border-radius: 3px; display: none; }
+.hm-steps__rail i { display: block; width: 100%; height: 100%; background: var(--hm-gold); border-radius: 3px; transform-origin: top; }
+@media (min-width: 900px) { .hm-steps__rail { display: block; } }
+.hm-steps li { counter-increment: s; display: grid; grid-template-columns: 64px 1fr; gap: 6px 20px; padding: 24px 0; border-top: 2px solid rgba(18, 59, 67, .18); }
 .hm-steps li::before { content: counter(s); grid-row: span 2; font: 700 3.4rem/1 var(--font-sans); letter-spacing: -.05em; color: var(--hm-ink); }
 .hm-steps p { color: #3f5053; }
 
 /* Tarifs : tableau d'affichage */
-.hm-board { list-style: none; margin: 48px 0 0; padding: 0; display: grid; column-gap: 72px; }
+.hm-board { list-style: none; margin: 32px 0 0; padding: 0; display: grid; column-gap: 72px; }
 @media (min-width: 860px) { .hm-board { grid-template-columns: 1fr 1fr; } }
 .hm-board li { display: flex; align-items: center; gap: 12px; padding: 18px 0; border-bottom: 1px solid var(--hm-line); }
 .hm-board__name { font: 700 1.2rem var(--font-sans); letter-spacing: -.02em; display: grid; line-height: 1.2; }
@@ -132,13 +136,14 @@
 .hm-board__dots { flex: 1; align-self: end; margin-bottom: 8px; border-bottom: 2px dotted #b5bcb4; min-width: 16px; }
 .hm-board__price { font-weight: 700; white-space: nowrap; }
 .hm-board button { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--hm-ink); color: var(--hm-paper); transition: background-color .15s ease, transform .15s ease; }
+.hm-board button.is-done { background: var(--hm-good); color: #fff; }
 .hm-board button:hover { background: var(--hm-gold); color: var(--hm-ink); transform: scale(1.06); }
 .hm-more { margin-top: 28px; font-weight: 700; }
 .hm-more a { display: inline-flex; align-items: center; gap: 8px; border-bottom: 2px solid var(--hm-gold); padding-bottom: 4px; }
 
 /* Zones */
-.hm-coverage { background: var(--hm-ink); color: var(--hm-paper); padding-block: clamp(64px, 8vw, 112px); }
-.hm-coverage__grid { display: grid; gap: 48px; align-items: start; }
+.hm-coverage { background: var(--hm-ink); color: var(--hm-paper); padding-block: clamp(48px, 6vw, 80px); }
+.hm-coverage__grid { display: grid; gap: 36px; align-items: start; }
 @media (min-width: 900px) { .hm-coverage__grid { grid-template-columns: 1fr 1fr; gap: 80px; } }
 .hm-coverage p { margin-top: 16px; color: #cfdad7; }
 .hm-zones { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 0; padding: 0; }
@@ -151,7 +156,7 @@
 .hm-hours a { color: var(--hm-gold); border-bottom: 2px solid currentColor; }
 
 /* FAQ */
-.hm-faq { display: grid; gap: 40px; }
+.hm-faq { display: grid; gap: 32px; }
 @media (min-width: 900px) { .hm-faq { grid-template-columns: .8fr 1.2fr; gap: 80px; } }
 .hm-faq__list { border-top: 2px solid var(--hm-ink); }
 .hm-faq details { border-bottom: 1px solid var(--hm-line); }
@@ -162,7 +167,7 @@
 .hm-faq details p { padding: 0 52px 24px 0; color: var(--hm-muted); }
 
 /* Clôture */
-.hm-closing { background: var(--hm-gold); color: var(--hm-ink); padding-block: clamp(56px, 8vw, 104px); }
+.hm-closing { background: var(--hm-gold); color: var(--hm-ink); padding-block: clamp(48px, 6vw, 80px); }
 .hm-closing .hm-wrap { display: flex; flex-wrap: wrap; gap: 28px 48px; align-items: center; justify-content: space-between; }
 .hm-closing h2 { font-size: clamp(2rem, 4.6vw, 3.6rem); max-width: 16ch; }
 
@@ -176,7 +181,18 @@
   .hm-sticky .hm-btn { min-height: 48px; padding: 0 22px; }
 }
 
+/* Ouverture fluide des questions */
+.hm-faq details { interpolate-size: allow-keywords; }
+.hm-faq details::details-content { block-size: 0; overflow: hidden; transition: block-size .35s cubic-bezier(.22, 1, .36, 1), content-visibility .35s allow-discrete; }
+.hm-faq details[open]::details-content { block-size: auto; }
+.hm-faq summary::after { transition: background-color .2s ease, transform .3s ease; }
+.hm-faq details[open] summary::after { transform: rotate(180deg); }
+.hm-faq summary:hover { color: var(--hm-good); }
+.hm-btn--gold, .hm-btn--ink { box-shadow: 0 0 0 0 rgba(213, 160, 90, 0); }
+.hm-hero .hm-btn--gold:hover { box-shadow: 0 10px 28px rgba(213, 160, 90, .35); }
+
 @media (prefers-reduced-motion: reduce) {
   .hm-btn, .hm-board button, .hm-faq summary::after { transition: none; }
-  .hm-btn:hover, .hm-board button:hover { transform: none; }
+  .hm-btn:hover, .hm-board button.is-done { background: var(--hm-good); color: #fff; }
+.hm-board button:hover { transform: none; }
 }
