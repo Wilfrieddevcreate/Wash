@@ -21,19 +21,19 @@
 
 /* Navigation */
 .sh__nav { display: none; justify-content: center; gap: clamp(18px, 2.4vw, 36px); }
-.sh__nav a { position: relative; display: inline-flex; align-items: center; min-height: 44px; font: 600 .9375rem 'DM Sans', sans-serif; letter-spacing: 0; color: #3b5559; transition: color .15s ease; }
+.sh__nav a { position: relative; display: inline-flex; align-items: center; min-height: 44px; font: 600 .9375rem var(--font-sans); letter-spacing: 0; color: #3b5559; transition: color .15s ease; }
 .sh__nav a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 6px; height: 3px; border-radius: 2px; background: var(--sh-gold); transform: scaleX(0); transform-origin: left; transition: transform .2s ease; }
 .sh__nav a:hover, .sh__nav a.is-active { color: var(--sh-ink); }
 .sh__nav a:hover::after, .sh__nav a.is-active::after { transform: scaleX(1); }
 
 /* Actions */
 .sh__actions { display: flex; align-items: center; gap: 6px; justify-self: end; }
-.sh__track { display: none; padding: 0 14px; min-height: 44px; align-items: center; font: 600 .9375rem 'DM Sans', sans-serif; color: #3b5559; }
+.sh__track { display: none; padding: 0 14px; min-height: 44px; align-items: center; font: 600 .9375rem var(--font-sans); color: #3b5559; }
 .sh__track:hover { color: var(--sh-ink); text-decoration: underline; text-decoration-color: var(--sh-gold); text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .sh__cart { position: relative; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; color: var(--sh-ink); transition: background-color .15s ease; }
 .sh__cart:hover { background: rgba(18, 59, 67, .08); }
-.sh__cart b { position: absolute; top: 3px; right: 1px; display: grid; place-items: center; min-width: 20px; height: 20px; padding-inline: 5px; border-radius: 999px; background: var(--sh-gold); color: var(--sh-ink); font: 800 .75rem 'DM Sans', sans-serif; border: 2px solid var(--sh-paper); box-sizing: content-box; }
-.sh__cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 0 22px; margin-left: 6px; border-radius: 12px; background: var(--sh-gold); color: var(--sh-ink); font: 700 .9375rem 'DM Sans', sans-serif; letter-spacing: 0; transition: background-color .15s ease, transform .15s ease; }
+.sh__cart b { position: absolute; top: 3px; right: 1px; display: grid; place-items: center; min-width: 20px; height: 20px; padding-inline: 5px; border-radius: 999px; background: var(--sh-gold); color: var(--sh-ink); font: 800 .75rem var(--font-sans); border: 2px solid var(--sh-paper); box-sizing: content-box; }
+.sh__cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 0 22px; margin-left: 6px; border-radius: 12px; background: var(--sh-gold); color: var(--sh-ink); font: 700 .9375rem var(--font-sans); letter-spacing: 0; transition: background-color .15s ease, transform .15s ease; }
 .sh__cta:hover { background: #dfae6b; transform: translateY(-1px); }
 .sh__burger { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; color: var(--sh-ink); }
 .sh__burger:hover { background: rgba(18, 59, 67, .08); }
@@ -54,7 +54,7 @@
 .sh-menu { position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column; background: var(--sh-paper); color: var(--sh-ink); overflow-y: auto; }
 .sh-menu__top { display: flex; align-items: center; justify-content: space-between; height: 64px; flex: none; padding-inline: clamp(20px, 5vw, 64px); }
 .sh-menu__links { display: flex; flex-direction: column; padding: 12px clamp(20px, 5vw, 64px) 0; }
-.sh-menu__links a { display: flex; align-items: center; min-height: 64px; border-bottom: 1px solid var(--sh-line); font: 800 1.75rem 'Schibsted Grotesk', 'DM Sans', sans-serif; letter-spacing: -.03em; color: var(--sh-ink); }
+.sh-menu__links a { display: flex; align-items: center; min-height: 64px; border-bottom: 1px solid var(--sh-line); font: 800 1.75rem var(--font-sans); letter-spacing: -.03em; color: var(--sh-ink); }
 .sh-menu__links a.is-active { color: #8a6128; }
 .sh-menu__foot { margin-top: auto; padding: 24px clamp(20px, 5vw, 64px) calc(24px + env(safe-area-inset-bottom)); display: grid; gap: 16px; }
 .sh__cta--block { width: 100%; min-height: 56px; margin: 0; font-size: 1.0625rem; }

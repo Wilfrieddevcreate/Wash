@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
 @import "tailwindcss";
 :root {
+  --font-sans:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --ink:#123b43;
   --ink2:#0d3037;
   --paper:#f5f3ee;
@@ -22,7 +22,7 @@ body {
   margin:0;
   background:var(--paper);
   color:var(--ink);
-  font-family:'DM Sans',sans-serif;
+  font-family:var(--font-sans);
 }
 button,input,textarea,select {
   font:inherit;
@@ -99,7 +99,7 @@ h3 {
   height:30px;
   color:var(--paper);
   background:var(--ink);
-  font-family:Georgia,serif;
+  font-family:var(--font-sans);
   font-style:italic;
   font-size:22px;
   border-radius:50%;
@@ -172,7 +172,7 @@ h3 {
   font-size:clamp(4rem,7vw,7rem);
 }
 em {
-  font-family:'Playfair Display',serif;
+  font-family:var(--font-sans);
   font-weight:500;
 }
 .hero-lead {
@@ -221,11 +221,11 @@ em {
   display:flex;
   gap:16px;
   align-items:center;
-  font-family:'Playfair Display',serif;
+  font-family:var(--font-sans);
   font-size:17px;
 }
 .hero-note span,.service-number {
-  font:12px 'DM Sans';
+  font:12px var(--font-sans);
   color:var(--gold);
   letter-spacing:.1em;
 }
@@ -240,7 +240,7 @@ em {
   font-size:13px;
 }
 .trust-bar>span {
-  font-family:'Playfair Display';
+  font-family:var(--font-sans);
   font-size:17px;
 }
 .trust-bar div {
@@ -1014,7 +1014,7 @@ textarea {
   gap:12vw;
 }
 .contact-grid h3 {
-  font-family:'Playfair Display';
+  font-family:var(--font-sans);
   font-size:27px;
   font-weight:500;
   margin-bottom:12px;
@@ -1345,7 +1345,7 @@ textarea {
   text-align:right;
 }
 .courier-count strong {
-  font:55px 'Playfair Display';
+  font:55px var(--font-sans);
   display:block;
   color:#e8bd7a;
 }
@@ -1630,7 +1630,7 @@ textarea {
   }
   .mobile-work-brand {
     display:block;
-    font-family:'Playfair Display';
+    font-family:var(--font-sans);
     font-size:19px;
   }
   .user-name {
@@ -1705,7 +1705,7 @@ textarea {
   --shadow:0 20px 70px rgba(18,59,67,.10);
 }
 body {
-  font-family:'DM Sans',sans-serif;
+  font-family:var(--font-sans);
   background:var(--paper);
   letter-spacing:-.01em;
 }
@@ -1817,7 +1817,7 @@ h2 {
   color:#f0c98f;
 }
 .hero-stamp span {
-  font:italic 24px Georgia;
+  font:italic 24px var(--font-sans);
 }
 .hero-stamp small {
   font-size:8px;
@@ -2058,7 +2058,7 @@ h2 {
   box-shadow:0 8px 30px rgba(18,59,67,.04);
 }
 .workspace-title h1 {
-  letter-spacing:-.055em;
+  letter-spacing:-.035em;
 }
 @media(prefers-reduced-motion:reduce) {
   *,*:before,*:after {
@@ -2239,3 +2239,70 @@ input[aria-invalid="true"] {
 }
 
 /* En-tête : tient sur 360 px (le CTA reste visible, le menu burger aussi) */
+
+/* Typographie : une seule famille, interlettrage resserré uniquement sur les grands titres */
+body {
+  font-family:var(--font-sans);
+  letter-spacing:0;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+h1 {
+  letter-spacing:-.035em;
+  font-weight:800;
+}
+h2 {
+  letter-spacing:-.03em;
+  font-weight:700;
+}
+h3 {
+  letter-spacing:-.015em;
+}
+button,input,textarea,select {
+  font-family:inherit;
+}
+/* Chiffres alignés pour les montants */
+.summary-row b,.summary-total b,.metric strong,.order-footer span,.catalog-info strong,.order-item span,.tracking-detail b,.orders-table td {
+  font-variant-numeric:tabular-nums;
+}
+
+/* Réglages Plus Jakarta Sans : interlettrage modéré, espaces entre mots rétablis, titres moins massifs */
+body {
+  word-spacing:.04em;
+}
+h1,h2,h3 {
+  word-spacing:.08em;
+}
+h1,.page-intro h1,.workspace-title h1 {
+  font-size:clamp(2.5rem,5.2vw,4.4rem);
+  line-height:1.05;
+  letter-spacing:-.025em;
+}
+h2 {
+  font-size:clamp(1.9rem,3.6vw,3rem);
+  line-height:1.1;
+  letter-spacing:-.02em;
+}
+h3 {
+  letter-spacing:-.01em;
+}
+em,h1 em,h2 em,h3 em {
+  font-style:normal;
+  font-weight:inherit;
+}
+.stepper {
+  font-size:13px;
+}
+.stepper :is(button,a) {
+  font-size:13px;
+}
+.stepper :is(button,a):not(:last-child):after {
+  display:none;
+}
+body {
+  font-kerning:normal;
+  font-feature-settings:"kern" 1,"liga" 1;
+}
+h1,h2,h3 {
+  text-wrap:balance;
+}
