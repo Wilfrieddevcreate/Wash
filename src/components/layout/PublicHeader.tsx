@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'motion/react';
 import { ArrowRight, Menu, ShoppingBag, X } from 'lucide-react';
 import { useStore } from '@/lib/store';
+import Logo from '@/components/Logo';
 import './header.css';
 
 const links = [
@@ -17,9 +18,8 @@ const links = [
 ];
 
 function Brand({ onClick }: { onClick?: () => void }) {
-  return <Link className="sh-brand" href="/" onClick={onClick} aria-label="soigné, retour à l’accueil">
-    <span className="sh-brand__mark" aria-hidden>s</span>
-    <span className="sh-brand__name">soigné</span>
+  return <Link className="sh-brand" href="/" onClick={onClick} aria-label="Plié, retour à l’accueil">
+    <Logo />
   </Link>;
 }
 

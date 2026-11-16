@@ -77,7 +77,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const placeOrder = useCallback((): Order => {
     const order: Order = {
-      id: `SG-${counter.current++}`,
+      id: `PL-${counter.current++}`,
       client: 'Vous',
       zone: collect.zone,
       total,

@@ -19,9 +19,6 @@
 /* Logo */
 .sh-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--sh-ink); }
 
-.sh-brand__mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--sh-ink); color: var(--sh-paper); font: italic 600 1.45rem/1 Georgia, serif; padding-bottom: 3px; }
-.sh-brand__name { font: 800 1.45rem/1 'Schibsted Grotesk', 'DM Sans', sans-serif; letter-spacing: -.04em; }
-
 /* Navigation */
 .sh__nav { display: none; justify-content: center; gap: clamp(18px, 2.4vw, 36px); }
 .sh__nav a { position: relative; display: inline-flex; align-items: center; min-height: 44px; font: 600 .9375rem 'DM Sans', sans-serif; letter-spacing: 0; color: #3b5559; transition: color .15s ease; }

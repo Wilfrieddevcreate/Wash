@@ -13,14 +13,14 @@ export default function Tracking() {
   const { placedOrders } = useStore();
   const params = useSearchParams();
   const orders = allOrders(placedOrders);
-  const [query, setQuery] = useState(params.get('ref') ?? placedOrders[0]?.id ?? 'SG-24091');
+  const [query, setQuery] = useState(params.get('ref') ?? placedOrders[0]?.id ?? 'PL-24091');
   const order = orders.find((o) => o.id.toLowerCase() === query.trim().toLowerCase());
   const firstName = order && order.client !== 'Vous' ? order.client.split(' ')[0] : null;
 
   return <main className="page tracking">
     <div className="tracking-top">
       <div><p className="eyebrow">Suivi de commande</p><h1>{firstName ? `Bonjour ${firstName},` : 'Bonjour,'}<br /><em>on s’occupe de tout.</em></h1></div>
-      <label className="tracking-search"><Search size={17} /><input value={query} onChange={(e) => setQuery(e.target.value)} aria-label="Référence de commande" placeholder="SG-24091" /></label>
+      <label className="tracking-search"><Search size={17} /><input value={query} onChange={(e) => setQuery(e.target.value)} aria-label="Référence de commande" placeholder="PL-24091" /></label>
     </div>
 
     {order ? <div className="tracking-card">
@@ -39,7 +39,7 @@ export default function Tracking() {
         <div><span>Total estimé</span><b>{money(order.total)}</b></div>
         <div><span>Zone</span><b>{order.zone}</b></div>
       </div>
-    </div> : <div className="tracking-card"><p>Aucune commande ne correspond à « {query} ». Essayez par exemple SG-24091.</p></div>}
+    </div> : <div className="tracking-card"><p>Aucune commande ne correspond à « {query} ». Essayez par exemple PL-24091.</p></div>}
 
     <Link className="text-link" href="/contact">Une question sur votre commande ? <ArrowRight size={16} /></Link>
   </main>;

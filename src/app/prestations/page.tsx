@@ -3,7 +3,7 @@ import Services from '@/views/Services';
 
 export const metadata: Metadata = {
   title: "Nos prestations",
-  description: "Lavage, repassage, nettoyage à sec et linge de maison : découvrez les prestations de soigné.",
+  description: "Lavage, repassage, nettoyage à sec et linge de maison : découvrez les prestations de Plié.",
 };
 
 export default function PrestationsPage() {

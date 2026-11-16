@@ -43,9 +43,9 @@ export const slots = ['08:00 — 10:00', '10:00 — 12:00', '14:00 — 16:00'] a
 export const LOGISTICS_FEE = 1000;
 
 export const demoOrders: Order[] = [
-  { id: 'SG-24091', client: 'Aïcha K.', zone: 'Zogbadjè', total: 8400, status: 'En traitement', date: '12 nov. 2026', pieces: 4, pickup: 'mercredi 13 nov. · 08:00 — 10:00', stage: 3 },
-  { id: 'SG-24090', client: 'Thomas A.', zone: 'Arconville', total: 5200, status: 'Prête à livrer', date: '11 nov. 2026', pieces: 3, pickup: 'mardi 12 nov. · 10:00 — 12:00', stage: 4 },
-  { id: 'SG-24089', client: 'Mireille D.', zone: 'Fidjrossè', total: 12600, status: 'Collecte programmée', date: '11 nov. 2026', pieces: 7, pickup: 'jeudi 14 nov. · 14:00 — 16:00', stage: 1 },
+  { id: 'PL-24091', client: 'Aïcha K.', zone: 'Zogbadjè', total: 8400, status: 'En traitement', date: '12 nov. 2026', pieces: 4, pickup: 'mercredi 13 nov. · 08:00 — 10:00', stage: 3 },
+  { id: 'PL-24090', client: 'Thomas A.', zone: 'Arconville', total: 5200, status: 'Prête à livrer', date: '11 nov. 2026', pieces: 3, pickup: 'mardi 12 nov. · 10:00 — 12:00', stage: 4 },
+  { id: 'PL-24089', client: 'Mireille D.', zone: 'Fidjrossè', total: 12600, status: 'Collecte programmée', date: '11 nov. 2026', pieces: 7, pickup: 'jeudi 14 nov. · 14:00 — 16:00', stage: 1 },
 ];
 
 export const money = (n: number) => `${n.toLocaleString('fr-FR')} FCFA`;
