@@ -2,15 +2,18 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Search } from 'lucide-react';
+import { AnimatePresence, motion, MotionConfig } from 'motion/react';
+import { ArrowRight, Minus, Plus, Search, ShoppingBag } from 'lucide-react';
 import Photo from '@/components/Photo';
-import { items, money } from '@/lib/data';
+import { EASE, group, rise } from '@/components/motion';
+import { items, LOGISTICS_FEE, money } from '@/lib/data';
 import { useStore } from '@/lib/store';
+import './catalogue.css';
 
 const categories = ['Tous', 'Vêtements', 'Linge de maison'];
 
 export default function Catalogue() {
-  const { add } = useStore();
+  const { cart, cartCount, subtotal, setQty, add } = useStore();
   const [category, setCategory] = useState('Tous');
   const [search, setSearch] = useState('');
   const filtered = useMemo(
@@ -18,19 +21,61 @@ export default function Catalogue() {
     [category, search],
   );
 
-  return <main className="page">
-    <div className="page-intro compact"><p className="eyebrow">Le catalogue</p><h1>Tout ce qui mérite<br /><em>d’être bien traité.</em></h1><p>Des tarifs indicatifs en FCFA, pensés pour une commande simple et transparente.</p></div>
-    <div className="catalog-toolbar">
-      <div className="tabs">{categories.map((x) => <button className={category === x ? 'selected' : ''} aria-pressed={category === x} onClick={() => setCategory(x)} key={x}>{x}</button>)}</div>
-      <label className="search"><Search size={17} /><input placeholder="Rechercher un article" aria-label="Rechercher un article" value={search} onChange={(e) => setSearch(e.target.value)} /></label>
-    </div>
-    <div className="catalog-grid">
-      {filtered.map((item) => <article className="catalog-card" key={item.id}>
-        <div className="catalog-img"><Photo src={item.image} alt={item.name} /><span>{item.category}</span></div>
-        <div className="catalog-info"><div><h3>{item.name}</h3><p>{item.description}</p></div><strong>{money(item.price)}</strong></div>
-        <button className="catalog-add" onClick={() => add(item.id)}>Ajouter à la commande <ArrowRight size={15} /></button>
-      </article>)}
-    </div>
-    <div className="order-float"><span>{filtered.length ? 'Besoin d’un coup de main ?' : 'Aucun article trouvé'}</span><Link href="/commander">Voir ma commande <ArrowRight size={16} /></Link></div>
-  </main>;
+  return <MotionConfig reducedMotion="user"><main className="ct">
+    <section className="ct-hero">
+      <motion.div className="ct-wrap" variants={group(0.1, 0.05)} initial="hidden" animate="show">
+        <motion.h1 variants={rise}>Les tarifs, article par article.</motion.h1>
+        <motion.p variants={rise}>Prix indicatifs en FCFA, confirmés avant la collecte. Ajoutez vos articles : ils vous attendent dans votre commande.</motion.p>
+        <motion.div variants={rise} className="ct-tools">
+          <div className="ct-tabs" role="group" aria-label="Catégorie">
+            {categories.map((x) => <button type="button" key={x} className={category === x ? 'is-on' : undefined} aria-pressed={category === x} onClick={() => setCategory(x)}>
+              {category === x && <motion.span layoutId="ct-pill" className="ct-tabs__pill" transition={{ type: 'spring', stiffness: 400, damping: 32 }} />}
+              <span>{x}</span>
+            </button>)}
+          </div>
+          <label className="ct-search"><Search size={18} aria-hidden /><input type="search" placeholder="Rechercher un article" aria-label="Rechercher un article" value={search} onChange={(e) => setSearch(e.target.value)} /></label>
+        </motion.div>
+      </motion.div>
+    </section>
+
+    <section className="ct-body">
+      <div className="ct-wrap">
+        <p className="ct-count" aria-live="polite">{filtered.length} article{filtered.length > 1 ? 's' : ''}</p>
+        <motion.ul className="ct-grid" layout>
+          <AnimatePresence mode="popLayout" initial={false}>
+            {filtered.map((item) => {
+              const qty = cart[item.id] ?? 0;
+              return <motion.li key={item.id} className={`ct-card${qty ? ' is-in' : ''}`} layout initial={{ opacity: 0, scale: 0.94, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.94 }} transition={{ duration: 0.4, ease: EASE }} whileHover={{ y: -4 }}>
+                <div className="ct-card__img"><Photo src={item.image} alt={item.name} /><span>{item.category}</span></div>
+                <div className="ct-card__body">
+                  <div className="ct-card__top"><h2>{item.name}</h2><strong>{money(item.price)}</strong></div>
+                  <p>{item.description}</p>
+                  <div className="ct-card__act">
+                    {qty === 0
+                      ? <motion.button type="button" className="ct-add" whileTap={{ scale: 0.96 }} onClick={() => add(item.id)}><Plus size={18} aria-hidden /> Ajouter</motion.button>
+                      : <div className="ct-step" role="group" aria-label={`Quantité de ${item.name}`}>
+                          <motion.button type="button" whileTap={{ scale: 0.85 }} onClick={() => setQty(item.id, -1)} aria-label={`Retirer un ${item.name}`}><Minus size={18} aria-hidden /></motion.button>
+                          <motion.output key={qty} initial={{ y: -8, opacity: 0 }} animate={{ y: 0, opacity: 1 }} aria-live="polite">{qty}</motion.output>
+                          <motion.button type="button" whileTap={{ scale: 0.85 }} onClick={() => setQty(item.id, 1)} aria-label={`Ajouter un ${item.name}`}><Plus size={18} aria-hidden /></motion.button>
+                        </div>}
+                  </div>
+                </div>
+              </motion.li>;
+            })}
+          </AnimatePresence>
+        </motion.ul>
+
+        {filtered.length === 0 && <div className="ct-empty"><b>Aucun article ne correspond.</b><p>Essayez un autre mot, ou écrivez-nous si votre pièce n’est pas listée.</p><Link href="/contact">Nous écrire <ArrowRight size={16} aria-hidden /></Link></div>}
+
+        <p className="ct-note">À chaque commande s’ajoutent {money(LOGISTICS_FEE)} de collecte et livraison. Une pièce qui n’est pas listée&nbsp;? <Link href="/contact">Demandez-nous un tarif.</Link></p>
+      </div>
+    </section>
+
+    <AnimatePresence>
+      {cartCount > 0 && <motion.div className="ct-bar" initial={{ y: 90, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 90, opacity: 0 }} transition={{ duration: 0.45, ease: EASE }}>
+        <span className="ct-bar__info"><ShoppingBag size={20} aria-hidden /><b>{cartCount} article{cartCount > 1 ? 's' : ''}</b><span>{money(subtotal)}</span></span>
+        <Link className="ct-bar__cta" href="/commander">Voir ma commande <ArrowRight size={18} aria-hidden /></Link>
+      </motion.div>}
+    </AnimatePresence>
+  </main></MotionConfig>;
 }
