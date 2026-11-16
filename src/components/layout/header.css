@@ -1,9 +1,11 @@
 /* En-tête public — palette d'origine (vert #123b43, papier #f6f4ef, or #d5a05a). */
-.sh {
+.sh, .sh-menu {
   --sh-ink: #123b43;
   --sh-paper: #f6f4ef;
   --sh-gold: #d5a05a;
   --sh-line: #d7d9d2;
+}
+.sh {
   position: sticky; top: 0; z-index: 50;
   background: rgba(246, 244, 239, .94); backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent; transition: border-color .2s ease, box-shadow .2s ease;
