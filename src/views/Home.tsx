@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { motion, MotionConfig, useScroll, useSpring, type Variants } from 'motion/react';
+import { motion, MotionConfig, useScroll, useSpring } from 'motion/react';
+import { EASE, group, Reveal, rise, VIEW } from '@/components/motion';
 import { ArrowRight, Check, Droplets, House, Plus, Shirt, Sparkles, type LucideIcon } from 'lucide-react';
 import { faqs, items, LOGISTICS_FEE, money, services, slots, zones } from '@/lib/data';
 import { useStore } from '@/lib/store';
@@ -18,26 +19,6 @@ const steps = [
   ['Nous rapportons', 'Votre linge revient propre et plié, sous 24 à 48 h. Vous payez à la récupération ou à l’avance.'],
 ];
 
-
-/* ------------------------------------------------------------- Animation */
-
-const EASE = [0.22, 1, 0.36, 1] as const;
-const VIEW = { once: true, margin: '0px 0px -12% 0px' } as const;
-
-const rise: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
-};
-const group = (stagger = 0.09, delay = 0): Variants => ({
-  hidden: {},
-  show: { transition: { staggerChildren: stagger, delayChildren: delay } },
-});
-
-/** Apparition au scroll, un bloc ou une liste d'enfants en cascade. */
-function Reveal({ children, className, as = 'div', stagger }: { children: ReactNode; className?: string; as?: 'div' | 'header' | 'ul' | 'ol'; stagger?: number }) {
-  const Tag = motion[as] as typeof motion.div;
-  return <Tag className={className} variants={stagger ? group(stagger) : rise} initial="hidden" whileInView="show" viewport={VIEW}>{children}</Tag>;
-}
 
 export default function Home() {
   return <MotionConfig reducedMotion="user"><main className="hm">
