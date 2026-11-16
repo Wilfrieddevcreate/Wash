@@ -203,3 +203,19 @@
 @media (min-width: 960px) { .od-sheet, .od-scrim { display: none; } }
 .od-bar__info span { white-space: nowrap; }
 @media (max-width: 759px) { .od-bar__info { font-size: .9375rem; } .od-btn { padding: 0 20px; } }
+
+@media (max-width: 759px) {
+  .od-bar__in { flex-wrap: nowrap; }
+  .od-bar__n, .od-back span { display: none; }
+  .od-bar__info { flex: 1; min-width: 0; }
+  .od-bar__t { color: var(--ink); font-size: 1.05rem; }
+  .od-bar__hint { position: absolute; left: var(--gutter); right: var(--gutter); bottom: calc(100% + 16px); margin: 0; padding: 8px 12px; border-radius: 10px; background: var(--ink); color: var(--paper); text-align: center; width: auto; }
+  .od-back { padding: 0 14px; background: var(--paper); }
+  .od-chips { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .od-chips label { min-width: 0; }
+}
+@media (max-width: 759px) {
+  .od-bar[data-step="3"] .od-bar__info { display: none; }
+  .od-bar[data-step="3"] .od-bar__act { width: 100%; }
+  .od-bar[data-step="3"] .od-btn { flex: 1; }
+}

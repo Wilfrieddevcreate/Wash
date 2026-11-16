@@ -104,11 +104,11 @@ export default function Order() {
   const days = useMemo(() => {
     if (!now) return [];
     const out: string[] = [];
-    for (let i = 0; out.length < 6 && i < 12; i++) {
+    for (let i = 0; out.length < 6 && i < 14; i++) {
       const d = new Date(now); d.setDate(d.getDate() + i);
-      if (d.getDay() !== 0) out.push(iso(d));
+      if (d.getDay() !== 0 && slots.some((s) => slotOpen(iso(d), s, now))) out.push(iso(d));
     }
-    return out.filter((d) => slots.some((s) => slotOpen(d, s, now)));
+    return out;
   }, [now]);
 
   const pickDate = (date: string) => {
@@ -342,14 +342,14 @@ export default function Order() {
       </div>
     </div>
 
-    {step < 4 && <div className="od-bar"><div className="od-wrap od-bar__in">
+    {step < 4 && <div className="od-bar" data-step={step}><div className="od-wrap od-bar__in">
       <button type="button" className="od-bar__info" onClick={() => setSheet(true)} aria-haspopup="dialog">
-        <span>{cartCount ? <><b>{cartCount} article{cartCount > 1 ? 's' : ''}</b> · {money(total)}</> : 'Panier vide'}</span>
+        <span>{cartCount ? <><span className="od-bar__n"><b>{cartCount} article{cartCount > 1 ? 's' : ''}</b> · </span><b className="od-bar__t">{money(total)}</b></> : 'Panier vide'}</span>
         <ChevronUp size={16} aria-hidden />
       </button>
       {missing && <p className="od-bar__hint" role="status">{missing}</p>}
       <div className="od-bar__act">
-        {step > 1 && <button type="button" className="od-back" onClick={() => go(step - 1)}><ArrowLeft size={18} aria-hidden /> Retour</button>}
+        {step > 1 && <button type="button" className="od-back" onClick={() => go(step - 1)} aria-label="Retour"><ArrowLeft size={18} aria-hidden /><span>Retour</span></button>}
         {step < 3
           ? <button type="button" className="od-btn" disabled={!!missing} onClick={next}>Continuer <ArrowRight size={18} aria-hidden /></button>
           : <button type="button" className="od-btn od-btn--gold" disabled={submitting} onClick={confirm}>{submitting ? <><Loader2 className="od-spin" size={18} aria-hidden /> Confirmation…</> : <>Confirmer · {money(total)}</>}</button>}

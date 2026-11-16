@@ -112,3 +112,10 @@
 .tk-help { margin-top: 24px; }
 
 .fq-item button, .cn-cards b, .tk-steps b, .tk-facts b { word-spacing: .08em; }
+
+@media (max-width: 559px) {
+  .tk-head { flex-wrap: nowrap; }
+  .tk-head > div { min-width: 0; }
+  .tk-truck { width: 48px; height: 48px; border-radius: 16px; flex: none; }
+  .tk-truck svg { width: 24px; height: 24px; }
+}

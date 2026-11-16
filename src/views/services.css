@@ -76,3 +76,19 @@
 .sv-closing { background: var(--gold); padding-block: clamp(36px, 4vw, 56px); }
 .sv-closing__in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 48px; }
 .sv-closing h2 { font-size: clamp(1.9rem, 4.2vw, 3.2rem); max-width: 16ch; }
+
+/* Mobile : le tableau tient dans l'écran, prix compris */
+@media (max-width: 639px) {
+  .sv-table { min-width: 0; }
+  .sv-table th, .sv-table td { padding: 12px 6px; }
+  .sv-table thead th { font-size: .6875rem; line-height: 1.2; }
+  .sv-table th[scope="row"] { font-size: .875rem; padding-left: 12px; }
+  .sv-table td svg { width: 16px; height: 16px; }
+  .sv-table__price { font-size: .8125rem; padding-right: 10px; }
+}
+
+.sv-table__sub { display: none; }
+@media (max-width: 639px) {
+  .sv-table__col { display: none; }
+  .sv-table__sub { display: block; margin-top: 2px; font: 500 .75rem var(--font-sans); color: var(--muted); }
+}

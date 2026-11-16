@@ -196,3 +196,12 @@
   .hm-btn:hover, .hm-board button.is-done { background: var(--hm-good); color: #fff; }
 .hm-board button:hover { transform: none; }
 }
+
+/* Mobile : l'illustration reste discrète pour amener le formulaire plus haut */
+@media (max-width: 899px) {
+  .hm-hero__art { width: min(62%, 220px); margin-top: -8px; }
+  .hm-art__badge { width: 84px; height: 84px; right: -14px; bottom: 6px; }
+  .hm-art__badge b { font-size: 1.05rem; }
+  .hm-art__badge span { font-size: .625rem; margin-top: -18px; }
+  .hm-hero__grid { gap: 20px; }
+}

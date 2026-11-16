@@ -76,14 +76,14 @@ export default function Services() {
         </Reveal>
         <Reveal className="sv-table-wrap">
           <table className="sv-table">
-            <thead><tr><th scope="col">Prestation</th>{cols.map((c) => <th scope="col" key={c}>{c}</th>)}<th scope="col">Dès</th></tr></thead>
+            <thead><tr><th scope="col">Prestation</th>{cols.map((c) => <th scope="col" key={c}>{c}</th>)}<th scope="col" className="sv-table__col">Dès</th></tr></thead>
             <tbody>
               {matrix.map(([id, ...flags]) => {
                 const s = services.find((x) => x.id === id)!;
                 return <tr key={id}>
-                  <th scope="row"><Link href={`#${id}`}>{s.title}</Link></th>
+                  <th scope="row"><Link href={`#${id}`}>{s.title}</Link><small className="sv-table__sub">Dès {money(s.price)}</small></th>
                   {flags.map((on, i) => <td key={cols[i]}>{on ? <Check size={18} aria-label="Oui" /> : <Minus size={18} aria-label="Non" className="is-off" />}</td>)}
-                  <td className="sv-table__price">{money(s.price)}</td>
+                  <td className="sv-table__price sv-table__col">{money(s.price)}</td>
                 </tr>;
               })}
             </tbody>

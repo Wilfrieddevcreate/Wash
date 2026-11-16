@@ -2306,3 +2306,6 @@ body {
 h1,h2,h3 {
   text-wrap:balance;
 }
+
+/* Pied de page aligné sur la marge des pages, sur mobile */
+@media (max-width: 759px) { footer { padding-inline: 20px; } }
