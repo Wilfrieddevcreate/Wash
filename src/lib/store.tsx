@@ -6,7 +6,7 @@ import { demoOrders, items, LOGISTICS_FEE, type Order } from './data';
 export type Collect = { name: string; phone: string; address: string; zone: string; date: string; slot: string; notes: string };
 export const emptyCollect: Collect = { name: '', phone: '', address: '', zone: 'Zogbadjè', date: '', slot: '08:00 — 10:00', notes: '' };
 
-const STORAGE_KEY = 'plie:v1';
+const STORAGE_KEY = 'impec:v1';
 type Saved = { cart: Record<number, number>; serviceId: string; collect: Collect; placedOrders: Order[] };
 
 type Store = {
@@ -101,7 +101,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const placeOrder = useCallback((): Order => {
     const order: Order = {
-      id: `PL-${24102 + placedOrders.length}`,
+      id: `IM-${24102 + placedOrders.length}`,
       client: collect.name.trim() || 'Vous',
       zone: collect.zone,
       total,

@@ -28,7 +28,7 @@ function Footer() {
   return <footer>
     <div className="footer-top">
       <div>
-        <Link className="brand inverse" href="/" aria-label="Plié, retour à l’accueil"><Logo tone="light" sub="pressing à domicile" /></Link>
+        <Link className="brand inverse" href="/" aria-label="Impec, retour à l’accueil"><Logo tone="light" sub="pressing à domicile" /></Link>
         <p>Le soin qui vient à vous.<br />Abomey-Calavi, Bénin.</p>
       </div>
       <div className="footer-links">
@@ -37,6 +37,6 @@ function Footer() {
         <div><b>Démonstration</b><Link href="/admin">Administration</Link><Link href="/partenaire">Espace partenaire</Link><Link href="/coursier">Espace coursier</Link></div>
       </div>
     </div>
-    <div className="footer-bottom"><span>© 2026 Plié. Projet de démonstration.</span><span><FiInstagram size={13} aria-hidden /> @plie.bj · Conditions générales · Confidentialité</span></div>
+    <div className="footer-bottom"><span>© 2026 Impec. Projet de démonstration.</span><span><FiInstagram size={13} aria-hidden /> @impec.bj · Conditions générales · Confidentialité</span></div>
   </footer>;
 }

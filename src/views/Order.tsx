@@ -76,12 +76,12 @@ export default function Order() {
   const go = useCallback((n: number, push = true) => {
     setStep(n);
     setSheet(false);
-    if (push) window.history.pushState({ plieStep: n }, '');
+    if (push) window.history.pushState({ impecStep: n }, '');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
   useEffect(() => {
-    window.history.replaceState({ ...(window.history.state ?? {}), plieStep: 1 }, '');
-    const onPop = (e: PopStateEvent) => { const n = e.state?.plieStep; setStep(typeof n === 'number' ? n : 1); setSheet(false); };
+    window.history.replaceState({ ...(window.history.state ?? {}), impecStep: 1 }, '');
+    const onPop = (e: PopStateEvent) => { const n = e.state?.impecStep; setStep(typeof n === 'number' ? n : 1); setSheet(false); };
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
   }, []);
@@ -178,7 +178,7 @@ export default function Order() {
   return <MotionConfig reducedMotion="user"><main className="od">
     <header className="od-top">
       <div className="od-wrap od-top__in">
-        <Link href="/" aria-label="Plié, retour à l’accueil"><Logo /></Link>
+        <Link href="/" aria-label="Impec, retour à l’accueil"><Logo /></Link>
         <Link className="od-quit" href="/"><X size={18} aria-hidden /> Quitter</Link>
       </div>
     </header>

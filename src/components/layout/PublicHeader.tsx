@@ -18,7 +18,7 @@ const links = [
 ];
 
 function Brand({ onClick }: { onClick?: () => void }) {
-  return <Link className="sh-brand" href="/" onClick={onClick} aria-label="Plié, retour à l’accueil">
+  return <Link className="sh-brand" href="/" onClick={onClick} aria-label="Impec, retour à l’accueil">
     <Logo />
   </Link>;
 }

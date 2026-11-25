@@ -1,4 +1,4 @@
-/* Tunnel de commande. Palette d'origine de Plié ; préfixe .od */
+/* Tunnel de commande. Palette d'origine de Impec ; préfixe .od */
 .od {
   --ink: #123b43; --ink-soft: #1d4d56; --paper: #f6f4ef; --white: #fffdf8; --sand: #e8e0d2; --line: #d7d9d2; --gold: #d5a05a; --good: #4d806c; --muted: #4f6266; --bad: #b3402f;
   --gutter: clamp(20px, 5vw, 64px);

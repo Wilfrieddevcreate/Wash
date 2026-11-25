@@ -10,7 +10,7 @@ import Logo from '@/components/Logo';
 type Kind = 'admin' | 'partner' | 'courier';
 
 const config = {
-  admin: { role: 'administration', eyebrow: 'Vue d’ensemble', title: 'Bonjour, équipe Plié.', initials: 'AK', user: 'Aïcha K.', nav: ['Vue d’ensemble', 'Commandes', 'Partenaires', 'Coursiers', 'Zones & tarifs', 'Catalogue', 'Finances', 'Réclamations', 'Paramètres'] },
+  admin: { role: 'administration', eyebrow: 'Vue d’ensemble', title: 'Bonjour, équipe Impec.', initials: 'AK', user: 'Aïcha K.', nav: ['Vue d’ensemble', 'Commandes', 'Partenaires', 'Coursiers', 'Zones & tarifs', 'Catalogue', 'Finances', 'Réclamations', 'Paramètres'] },
   partner: { role: 'espace partenaire', eyebrow: 'Espace partenaire', title: 'Bonjour, Pressing Horizon.', initials: 'PH', user: 'Pressing Horizon', nav: ['Vue d’ensemble', 'Commandes reçues', 'Historique'] },
   courier: { role: 'espace coursier', eyebrow: 'Espace coursier', title: 'Bonjour, Aïssatou.', initials: 'AA', user: 'Aïssatou A.', nav: ['Ma journée', 'Collectes', 'Livraisons', 'Historique'] },
 } as const;
@@ -21,7 +21,7 @@ export default function Workspace({ kind }: { kind: Kind }) {
 
   return <div className="workspace">
     <aside className="side">
-      <Link className="brand" href="/" aria-label="Plié, retour à l’accueil"><Logo tone="light" sub={c.role} /></Link>
+      <Link className="brand" href="/" aria-label="Impec, retour à l’accueil"><Logo tone="light" sub={c.role} /></Link>
       <nav className="side-nav" aria-label="Navigation de l’espace">
         {c.nav.map((label, i) => <button className={i === active ? 'selected' : ''} aria-current={i === active ? 'page' : undefined} onClick={() => setActive(i)} key={label}>{i === 0 ? <LayoutDashboard size={17} /> : i === 1 ? <Package size={17} /> : <ChevronRight size={17} />} {label}</button>)}
       </nav>
@@ -29,7 +29,7 @@ export default function Workspace({ kind }: { kind: Kind }) {
     </aside>
     <section className="workspace-main">
       <header className="workspace-header">
-        <div className="mobile-work-brand">plié</div>
+        <div className="mobile-work-brand">impec</div>
         <div className="workspace-actions"><button aria-label="Notifications"><Bell size={18} /></button><span className="avatar">{c.initials}</span><span className="user-name">{c.user}</span><ChevronDown size={15} /></div>
       </header>
       <div className="workspace-content">
@@ -101,8 +101,8 @@ function PartnerDash() {
 }
 
 const missions: Array<{ kind: string; ref: string; where: string; icon: LucideIcon }> = [
-  { kind: 'Collecte', ref: 'PL-24091', where: 'Zogbadjè · 08:00 — 10:00', icon: Package },
-  { kind: 'Livraison', ref: 'PL-24090', where: 'Arconville · 14:00 — 16:00', icon: Truck },
+  { kind: 'Collecte', ref: 'IM-24091', where: 'Zogbadjè · 08:00 — 10:00', icon: Package },
+  { kind: 'Livraison', ref: 'IM-24090', where: 'Arconville · 14:00 — 16:00', icon: Truck },
 ];
 
 function CourierDash() {

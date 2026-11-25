@@ -3,7 +3,7 @@ import { Contact } from '@/views/Static';
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Écrivez à l’équipe Plié.",
+  description: "Écrivez à l’équipe Impec.",
 };
 
 export default function ContactPage() {

@@ -4,7 +4,7 @@ import Tracking from '@/views/Tracking';
 
 export const metadata: Metadata = {
   title: "Suivi de commande",
-  description: "Suivez l’avancement de votre commande Plié.",
+  description: "Suivez l’avancement de votre commande Impec.",
 };
 
 export default function SuiviPage() {

@@ -36,12 +36,12 @@ const how = [
 
 export function About() {
   return <MotionConfig reducedMotion="user"><main className="in">
-    <Hero title="Le soin, en toute simplicité." lead="Plié rend le pressing aussi simple qu’une livraison de repas : vous réservez, nous passons, votre linge revient impeccable." />
+    <Hero title="Le soin, en toute simplicité." lead="Impec rend le pressing aussi simple qu’une livraison de repas : vous réservez, nous passons, votre linge revient impeccable." />
 
     <section className="in-section"><div className="in-wrap ab-story">
       <Reveal className="ab-photo"><Photo src={images.fold} alt="Pliage soigneux d’un vêtement" width={1000} height={850} priority /></Reveal>
       <Reveal className="ab-text">
-        <h2>Pourquoi Plié</h2>
+        <h2>Pourquoi Impec</h2>
         <p>Faire laver et repasser son linge ne devrait pas demander de traverser la ville ni d’attendre un comptoir.</p>
         <p>Nous coordonnons chaque étape, de la collecte à la livraison, pour que vos vêtements reviennent propres et pliés sans que vous ayez à courir. Le prix est affiché avant la collecte et le suivi se fait en ligne.</p>
         <Link className="in-link" href="/prestations">Voir nos prestations <ArrowRight size={16} aria-hidden /></Link>
@@ -63,7 +63,7 @@ export function About() {
     </div></section>
 
     <section className="in-closing"><Reveal className="in-wrap in-closing__in" stagger={0.15}>
-      <motion.h2 variants={rise}>Essayez Plié sur une première commande.</motion.h2>
+      <motion.h2 variants={rise}>Essayez Impec sur une première commande.</motion.h2>
       <motion.div variants={rise}><Link className="in-btn" href="/commander">Planifier une collecte <ArrowRight size={18} aria-hidden /></Link></motion.div>
     </Reveal></section>
   </main></MotionConfig>;
@@ -113,7 +113,7 @@ export function Contact() {
     <Hero title="Une question ? On vous écoute." lead="Notre équipe vous répond du lundi au samedi, de 8 h à 18 h." />
     <section className="in-section"><div className="in-wrap cn-grid">
       <Reveal as="ul" className="cn-cards" stagger={0.08}>
-        <motion.li variants={rise}><Mail aria-hidden /><div><small>Email</small><b>hello@plie.bj</b></div></motion.li>
+        <motion.li variants={rise}><Mail aria-hidden /><div><small>Email</small><b>hello@impec.bj</b></div></motion.li>
         <motion.li variants={rise}><Phone aria-hidden /><div><small>Téléphone</small><b>+229 01 90 00 00 00</b></div></motion.li>
         <motion.li variants={rise}><MapPin aria-hidden /><div><small>Zone</small><b>Abomey-Calavi, Bénin</b></div></motion.li>
         <motion.li variants={rise}><Clock3 aria-hidden /><div><small>Horaires</small><b>Lundi au samedi, 8 h à 18 h</b></div></motion.li>

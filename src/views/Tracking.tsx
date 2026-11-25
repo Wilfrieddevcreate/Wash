@@ -16,7 +16,7 @@ export default function Tracking() {
   const { placedOrders } = useStore();
   const params = useSearchParams();
   const orders = allOrders(placedOrders);
-  const [query, setQuery] = useState(params.get('ref') ?? placedOrders[0]?.id ?? 'PL-24091');
+  const [query, setQuery] = useState(params.get('ref') ?? placedOrders[0]?.id ?? 'IM-24091');
   const order = orders.find((o) => o.id.toLowerCase() === query.trim().toLowerCase());
   const firstName = order && order.client !== 'Vous' ? order.client.split(' ')[0] : null;
   const samples = orders.slice(0, 3).map((o) => o.id);
@@ -28,7 +28,7 @@ export default function Tracking() {
         <motion.p variants={rise}>Entrez votre référence pour suivre chaque étape, de la collecte à la livraison.</motion.p>
         <motion.form variants={rise} className="tk-search" onSubmit={(e) => e.preventDefault()} role="search">
           <Search size={20} aria-hidden />
-          <input value={query} onChange={(e) => setQuery(e.target.value)} aria-label="Référence de commande" placeholder="Ex. PL-24091" autoComplete="off" />
+          <input value={query} onChange={(e) => setQuery(e.target.value)} aria-label="Référence de commande" placeholder="Ex. IM-24091" autoComplete="off" />
         </motion.form>
         <motion.div variants={rise} className="tk-hints">Exemples :{samples.map((id) => <button type="button" key={id} onClick={() => setQuery(id)}>{id}</button>)}</motion.div>
       </motion.div>

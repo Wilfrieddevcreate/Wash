@@ -13,7 +13,7 @@ const sans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: { default: 'Plié — pressing à domicile', template: '%s · Plié' },
+  title: { default: 'Impec — pressing à domicile', template: '%s · Impec' },
   description: 'Collecte et livraison de pressing à domicile à Abomey-Calavi.',
 };
 
